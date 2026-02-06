@@ -1,0 +1,5 @@
+[plugin]
+package = "pretix-ivs-plugin"
+modules = [ "pretix_ivs_plugin" ]
+marketplace_name = "ivs-plugin"
+

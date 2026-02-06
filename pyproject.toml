@@ -1,0 +1,42 @@
+[project]
+name = "pretix-ivs-plugin"
+dynamic = ["version"]
+description = "Display a Amazon Interactive Video Service livestream in it's native player."
+readme = "README.rst"
+license = {text = "Apache"}
+keywords = ["pretix"]
+authors = [
+    {name = "Nate", email = "your-email@example.org"},
+]
+maintainers = [
+    {name = "Nate", email = "your-email@example.org"},
+]
+
+dependencies = [
+]
+
+[project.entry-points."pretix.plugin"]
+pretix_ivs_plugin = "pretix_ivs_plugin:PretixPluginMeta"
+
+[project.entry-points."distutils.commands"]
+build = "pretix_plugin_build.build:CustomBuild"
+
+[build-system]
+requires = [
+    "setuptools",
+    "pretix-plugin-build",
+]
+
+[project.urls]
+homepage = "https://github.com/nate176/pretix-ivs-plugin"
+repository = "https://github.com/nate176/pretix-ivs-plugin"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "pretix_ivs_plugin.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["pretix*"]
+namespaces = false

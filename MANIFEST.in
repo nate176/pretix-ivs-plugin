@@ -1,0 +1,5 @@
+recursive-include pretix_ivs_plugin/static *
+recursive-include pretix_ivs_plugin/templates *
+recursive-include pretix_ivs_plugin/locale *
+include LICENSE
+exclude .gitlab-ci.yml
