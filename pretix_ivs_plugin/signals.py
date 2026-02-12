@@ -1,4 +1,5 @@
 import jwt
+import time
 from django.dispatch import receiver
 from django.template.loader import get_template
 from pretix.presale.signals import order_info_top
@@ -11,7 +12,10 @@ from i18nfield.strings import LazyI18nString
 def _generate_ivs_token(event):
     private_key = event.settings.get('ivs_private_key')
     payload = {
-        'channel-arn': event.settings.get('ivs_channel_arn')
+        'aws:channel-arn': event.settings.get('ivs_channel_arn'),
+        "aws:access-control-allow-origin": "*",
+        'aws:maximum-resolution': 'FULL_HD',
+        'exp': int(time.time() + 60)
     }
     return jwt.encode(payload, private_key, algorithm="ES384")
 

@@ -29,7 +29,7 @@ class IvsCheckinView(EventViewMixin, OrderDetailMixin, View):
         order = self.order
         event = self.request.event
 
-        clist, _ = event.checkin_lists.get_or_create(name="Online Stream")
+        clist, _created = event.checkin_lists.get_or_create(name="Online Stream")
 
         for op in order.positions.all():
             if not op.checkins.filter(list=clist).exists():
