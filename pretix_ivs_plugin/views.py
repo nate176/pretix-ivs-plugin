@@ -51,9 +51,9 @@ class IvsPlayerView(TemplateView):
 
         csp_parts = [
             "default-src 'self'",
-            "script-src 'self' https://player.live-video.net 'unsafe-inline' 'unsafe-eval' blob:",
+            "script-src 'self' https://player.live-video.net https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval' blob:",
             "worker-src 'self' blob:",
-            "connect-src 'self' https://*.live-video.net https://*.amazonaws.com blob: data:",
+            "connect-src 'self' https://*.live-video.net https://*.amazonaws.com https://cdn.jsdelivr.net blob: data:",
             "media-src 'self' https://*.live-video.net https://*.amazonaws.com blob:",
             "style-src 'self' 'unsafe-inline'",
             "img-src 'self' data: https://*.live-video.net",
