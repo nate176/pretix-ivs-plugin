@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-07 19:01+0100\n"
+"POT-Creation-Date: 2026-02-13 10:17+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Nate\n"
 "Language-Team: \n"
@@ -10,3 +10,97 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/__init__.py:10
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/apps.py:17
+msgid "IVS Plugin"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/__init__.py:13
+msgid "IVS Video Player"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/apps.py:19
+msgid ""
+"Display a Amazon Interactive Video Service livestream in it's native player."
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:10
+msgid "Stream URL"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:14
+msgid "Eligible Products"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:15
+msgid "Only users with these ticket types will see the stream."
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:21
+msgid "Generate Token"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:25
+msgid "Private Key"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:27
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:32
+msgid "Required to Generate Tokens."
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:31
+msgid "Channel ARN"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:36
+msgid "Title"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:37
+msgid "Title to display on the order page."
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:42
+msgid "Content"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/forms.py:43
+msgid "Text to be displayed under the video. HTML is allowed."
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/signals.py:28
+msgid "AWS IVS Streaming"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/templates/pretix_ivs_plugin/order_info.html:24
+msgid ""
+"The stream will be available here starting 30 minutes before the event "
+"begins."
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/templates/pretix_ivs_plugin/order_info.html:28
+msgid "Ready to watch?"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/templates/pretix_ivs_plugin/order_info.html:29
+msgid "Click the button below to check in and start the stream."
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/templates/pretix_ivs_plugin/order_info.html:33
+msgid "Check in to Watch"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/templates/pretix_ivs_plugin/settings.html:5
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/templates/pretix_ivs_plugin/settings.html:10
+msgid "IVS Live Settings"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/templates/pretix_ivs_plugin/settings.html:15
+msgid "Save"
+msgstr ""
+
+#: src/pretix-ivs-plugin/pretix_ivs_plugin/views.py:37
+msgid "You are now checked in! Enjoy the stream."
+msgstr ""
