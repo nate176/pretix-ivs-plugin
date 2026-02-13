@@ -1,5 +1,7 @@
 import jwt
 import time
+from django.utils.timezone import now
+from datetime import timedelta
 from django.dispatch import receiver
 from django.template.loader import get_template
 from pretix.presale.signals import order_info_top
@@ -46,6 +48,7 @@ def s_order_info(sender, order, **kwargs):
         position__order=order,
         list__name='Online Stream'
     ).exists()
+    open_time = sender.date_from - timedelta(minutes=30)
 
     # If there is no URL, don't show the player at all
     if not ivs_url:
@@ -60,6 +63,9 @@ def s_order_info(sender, order, **kwargs):
         'is_checked_in': is_checked_in,
         'checkin_url': f"ivs_checkin/",
         'url': ivs_url,
+        'open': now() >= open_time,
+        'ot': open_time,
+        'st': now(),
     }
     if gen_token and is_checked_in:
         context['jwt'] = _generate_ivs_token(sender)

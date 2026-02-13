@@ -19,6 +19,10 @@
                 </iframe>
             </div>
             <div>{{ content|rich_text }}</div>
+        {% elif not open %}
+            <div class="well text-center">
+                <h3>{% trans "The stream will be available here starting 30 minutes before the event begins." %}</h3>
+            </div>
         {% else %}
             <div class="well text-center">
             <h3>{% trans "Ready to watch?" %}</h3>
@@ -31,6 +35,11 @@
                 </form>
             </div>
         {% endif %}
+        <p>__ DEBUG __</p>
+        <p>open {{ open }}</p>
+        <p>open time {{ ot }}</p>
+        <p>now {{ st }}</p>
+        <p>__ DEBUG __</p>
     </div>
 </div>
 

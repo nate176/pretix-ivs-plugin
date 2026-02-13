@@ -7,14 +7,15 @@
     </style>
 </head>
 <body>
-    <script src="https://player.live-video.net/1.16.0/amazon-ivs-player.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/filereader-polyfill@1.0.1/filereader.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=es2015%2Ces2016%2Ces2017%2CURL%2CBlob%2CObject.assign%2CIntersectionObserver%2CIntersectionObserverEntry%2CPromise"></script>
+    <script src="https://player.live-video.net/1.16.0/amazon-ivs-player.min.js"></script>
     <video id="video-player" controls playsinline></video>
     <script>
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
             const streamUrl = urlParams.get('url');
+            let retryTimeout;
 
             function init() {
                 if (typeof IVSPlayer === 'undefined') {
@@ -22,16 +23,32 @@
                     return;
                 }
                 const PlayerFactory = IVSPlayer.create ? IVSPlayer : window.IVSPlayer;
-            
-                if (PlayerFactory.isPlayerSupported && streamUrl) {
-                    const player = IVSPlayer.create({
-                        optimizeBackgroundPlayback: { enabled: true }
-                    });
-                    player.attachHTMLVideoElement(document.getElementById('video-player'));
-                    console.log("Loading Stream URL:", streamUrl);
-                    player.load(streamUrl);
-                    player.play();
-                }
+                if (!PlayerFactory.isPlayerSupported || !streamUrl) return;
+
+                const player = IVSPlayer.create({
+                    optimizeBackgroundPlayback: { enabled: true }
+                });
+                player.attachHTMLVideoElement(document.getElementById('video-player'));
+
+                player.addEventListener(IVSPlayer.PlayerEventType.ERROR, (err) => {
+                    console.warn("Player Error:", err.message);
+                    if (err.code === 404 || err.message.includes('playlist')) { 
+                        console.log("Stream might be offline. Retrying in 10 seconds...");
+                        clearTimeout(retryTimeout);
+                        retryTimeout = setTimeout(() => {
+                            player.load(streamUrl);
+                            player.play();
+                        }, 10000);
+                    }
+                });
+
+                player.addEventListener(IVSPlayer.PlayerState.PLAYING, () => {
+                    console.log("Stream is live!");
+                    clearTimeout(retryTimeout);
+                });
+
+                player.load(streamUrl);
+                player.play();
             }
 
             if (document.readyState === 'complete') {
