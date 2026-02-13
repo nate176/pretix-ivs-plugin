@@ -64,8 +64,6 @@ def s_order_info(sender, order, **kwargs):
         'checkin_url': f"ivs_checkin/",
         'url': ivs_url,
         'open': now() >= open_time,
-        'ot': open_time,
-        'st': now(),
     }
     if gen_token and is_checked_in:
         context['jwt'] = _generate_ivs_token(sender)
